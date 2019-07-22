@@ -10,12 +10,12 @@ from analyse_ponctuation_function import analyse_phrase
 
 
 #PARTIE VERBE
-from CONFIG import PATH_VERBE
+
 from CONFIG import PRONOM_PERSONNEL
 
-#PARTIE NOM
-from CONFIG import PATH_WIKIPEDIA
-from mot_cle_function import creation_par
+
+
+
 
 
 
@@ -41,6 +41,8 @@ GLOBAL = []
 
 def entree():
 
+    #RAJOUTER UN PTS OU UN ?
+
     print("qui a fait la joconde ? et le radeau de la méduse ?")
     print("qui a fait la joconde?")
     print('qui a fais et le radeau de la méduse ?')
@@ -55,6 +57,8 @@ def entree():
     print("Y a til du vert dans l'image ?")
     print("pourquoi pleut il ?")
     print("quand c'est les marchés de crest ?")
+    print("pourquoi la terre est ronde ?")
+    print("pourquoi chui moche ?")
 
     
     print("\n\n\n\n")
@@ -140,7 +144,7 @@ def analyse_ponctuation():
         for j in i:
             for key, value in PONCTUATION_ASSOCIATION.items():
                 if j == key:
-                    i.append([value])
+                    i.append(value)
 
     return liste
 
@@ -148,7 +152,7 @@ def analyse_ponctuation():
 
 
 
-
+from CONFIG import PATH_VERBE
 def verbe():
     """Par les verbes on doit faire l'action"""
 
@@ -177,21 +181,51 @@ def verbe():
 
 
 
-
-
+from CONFIG import PATH_WIKIPEDIA
+from mot_cle_function import creation_par
+from mot_cle_function import ville
 def mot_cle():
-    """les noms communs et combien par exemple ?"""
-    #radeau de la méduse ?
-    #mona lisa ?
+    """radeau de la méduse ?
+    mona lisa ? ville ?
+    """
 
     liste = analyse_phrase(GLOBAL, PONCTUATION)
     liste1 = ["+".join(i) for i in liste]
 
-    creation = creation_par(liste1, liste, PATH_WIKIPEDIA)
-    return creation
+    nom = creation_par(liste1, liste, PATH_WIKIPEDIA)
+    
+    if nom == []:
+        nom = []
+        nom_w = []
+        for i in GLOBAL:
+            sortie = ville(i)
+            if sortie != "" or sortie != None:
+                nom_w.append(sortie)
+
+        for i in nom_w:
+            if i != "ville":
+                pass
+            else:
+                nom.append(i)
+                
+                #mettre un scrap genre et, les, quand
+    
+    return nom
 
 
-#------------------------------------PREMIERE PARTIE TARLOUZE--------------------------
+
+
+
+
+
+#--------------------------PREMIERE PARTIE TARLOUZE--------------------------
+
+
+#on déduit si c'est une question
+
+#sur un nom du genre un tableau ?
+
+#et les verbes
 
 traitement_entree()
 
@@ -202,20 +236,76 @@ vrb = verbe()
 
 
 
+
+
+
+
+#----------------------------DEUXIEME PARTIE CHACALE-----------------------
+
+#le temps de la phrase ?
+
+#je ? il ? tu ?
+
+#déduis puis efface les mots.
+
+#QUEL DAL ? question sur google.
+
+#et surtout qu'est ce qui est demaindé ?
+
+
+
 print(ponctuation)
 print("")
 print(nom_commun)
 print("")
 print(vrb)
+print("\n\n\n")
+
+
+from analyse_ponctuation_function import type_question
+
+def traitement_type_phrase(ponctuation):
+    """question ? ordre ?
+    question == qui que quoi quand pourquoi
+    """
+
+    
+    type_phrase = ponctuation[0][-1]
+    print(type_phrase)
+    
+    if type_phrase == "question":
+        type_question(ponctuation)
+
+    
+    
+    #excla
+    #ordre
 
 
 
-#------------------------------------DEUXIEME PARTIE CHACALE--------------------------
+
+
+
+"""les noms communs et combien par exemple ?"""
+type_phrase = traitement_type_phrase(ponctuation)
 
 
 
 
-#maintenant faut comprendre la question qui ? quand ? quoi ? et la 3eme commencer a coder
+
+
+
+
+
+
+
+
+
+
+
+
+#maintenant faut comprendre la question qui ? quand ? quoi ?
+#et la 3eme commencer a coder
 
 
 
