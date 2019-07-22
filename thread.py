@@ -42,15 +42,14 @@ GLOBAL = []
 def entree():
 
     print("qui a fait la joconde ? et le radeau de la méduse ?")
-    print("qui a fait la joconde ?")
+    print("qui a fait la joconde?")
     print('qui a fais et le radeau de la méduse ?')
     print("qui est l'auteur de la joconde")
     print("l'auteur de la joconde ?")
-    
     print('qui est mona lisa ?')
     print('qui est le plus beau ?')
     print("est ce que je suis bete ?")
-    print("quel temps fait il aujourdh'ui?")
+    print("quel temps fait il aujourdh'ui ?")
     print("que veut dire le mot 'pierre' ?")
     print('de quelle couleur est un poussin ?')
     print("Y a til du vert dans l'image ?")
@@ -144,7 +143,6 @@ def analyse_ponctuation():
                     i.append([value])
 
     return liste
-    #PREMIERE LISTE ICI   
 
 
 
@@ -193,35 +191,31 @@ def mot_cle():
     return creation
 
 
+#------------------------------------PREMIERE PARTIE TARLOUZE--------------------------
+
+traitement_entree()
+
+
+ponctuation = analyse_ponctuation()
+nom_commun = mot_cle()
+vrb = verbe()
 
 
 
-th_entree = threading.Thread(target=traitement_entree)
-th_entree.start()
-th_entree.join()
+print(ponctuation)
+print("")
+print(nom_commun)
+print("")
+print(vrb)
 
 
 
-#PREMIERE PARTIE
-th1 = threading.Thread(target=analyse_ponctuation)
-th2 = threading.Thread(target=mot_cle)
-th3 = threading.Thread(target=verbe)
-
-th1.start()
-th2.start()
-th3.start()
-
-th1.join()
-th2.join()
-th3.join()
+#------------------------------------DEUXIEME PARTIE CHACALE--------------------------
 
 
 
-print('SUITEEE')
 
-
-
-#DEUXIEME PARTIE
+#maintenant faut comprendre la question qui ? quand ? quoi ? et la 3eme commencer a coder
 
 
 
