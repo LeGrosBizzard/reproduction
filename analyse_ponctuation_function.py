@@ -5,6 +5,10 @@ from CONFIG import ALPHABET
 from CONFIG import FORME_INTERROGATIVE
 
 
+
+#-----------------------PART ONE------------------------------
+
+
 def traitement_phrase(GLOBAL, PONCTUATION):
 
     liste = []
@@ -37,8 +41,7 @@ def traitement_phrase(GLOBAL, PONCTUATION):
                     ponctuationeze = True
                     if ponct == "?":
                         presence = True
-
-                             
+   
             c += 1
 
         if ponctuationeze is True:
@@ -132,3 +135,47 @@ def analyse_phrase(GLOBAL, PONCTUATION):
 
 #GLOBAL = la question posée traité
 #PONCTUATION les ponctuation
+
+
+
+
+
+#-----------------------PART TWO------------------------------
+
+#marqueur hier ojd demain ?
+#qui que quoi pourquoi ?
+
+def type_question(ponctuation):
+    
+    cherche_interro = ponctuation[:-1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
