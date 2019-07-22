@@ -1,0 +1,19 @@
+
+
+PONCTUATION = ["?",".",",","'",'"',":","!"]
+PONCTUATION_ASSOCIATION = {'?':'question'}
+PONCTUATION_OUT = {'question':'réponse'}
+
+
+PATH_VERBE = 'https://leconjugueur.lefigaro.fr/conjugaison/verbe/{}.html'
+
+PRONOM_PERSONNEL = ['Première personne du singulier',
+                    'Deuxième personne du singulier',
+                    'Troisième personne du singulier',
+                    'Première personne du pluriel',
+                    'Deuxième personne du pluriel',
+                    'Troisième personne du pluriel']
+
+
+
+PATH_WIKIPEDIA = "https://fr.wikipedia.org/w/index.php?search={0}+%3F&title=Sp%C3%A9cial%3ARecherche&go=Continuer&ns0=1"
