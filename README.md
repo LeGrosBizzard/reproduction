@@ -6,7 +6,7 @@ les temps de pause ca
 
 evite de trop commit
 
-elle a glissé... 
+elle a glissé... gros formation extraction de balle, formation belette et pas de formation grimpouille ? pffffffff
 
 #ok pas vidéo mais comprendre chaque ligne et le truks de math
 
