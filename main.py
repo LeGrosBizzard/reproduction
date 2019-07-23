@@ -60,10 +60,10 @@ while continuer:
         print("pourquoi pleut il ?")
         print("quand c'est les marchés de crest ?")
         print("pourquoi la terre est ronde ?")
-        print("pourquoi chui moche ?")
-
+        print("pourquoi je suis moche ?")
+        print("combien de gens n'arrive pas à grimper a un arbre ? (jtm rachou)")
         
-        print("\n\n\n\n")
+        print("\n\n")
 
         print('cherche moi un restaurant pres de chez moi')
         print("trouve l'adresse du concervatoire.")
@@ -204,9 +204,8 @@ while continuer:
         liste = analyse_phrase(GLOBAL, PONCTUATION)
         liste = censure(liste)
         
-        liste1 = ["%20".join(i) for i in liste]
-        liste1 = liste1[0][:-4]
-        
+        liste1 = ["+".join(i) for i in liste]
+
         nom = creation_par(liste1, liste)
 
 
@@ -232,43 +231,28 @@ while continuer:
 
 
 
-
-
-
-    #on déduit si c'est une question
-
-    #sur un nom du genre un tableau ?
-
-    #et les verbes
-
     traitement_entree()
 
 
-    ponctuation = analyse_ponctuation()
+    #ponctuation = analyse_ponctuation()
     nom_commun = mot_cle()
-    vrb = verbe()
+    #vrb = verbe()
 
 
 
 
 
-
-
-
-    #le temps de la phrase ?
-    #je ? il ? tu ?
-    #déduis puis efface les mots.
     #QUEL DAL ? question sur google.
     #et surtout qu'est ce qui est demaindé ?
 
-    print(GLOBAL)
-    print("\n\n")
-    print(ponctuation)
-    print("")
-    print(nom_commun)
-    print("")
-    print(vrb)
-    print("\n\n\n")
+##    print(GLOBAL)
+##    print("\n\n")
+##    print(ponctuation)
+##    print("")
+##    print(nom_commun)
+##    print("")
+##    print(vrb)
+##    print("\n\n\n")
 
 
 
@@ -279,32 +263,7 @@ while continuer:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    from type_phrase.question import type_question
+    from type_phrase.type_phrase import type_question
     def traitement_type_phrase(ponctuation):
         """question ? ordre ?
         question == qui que quoi quand pourquoi
@@ -312,26 +271,47 @@ while continuer:
 
         
         type_phrase = ponctuation[-1]
-        print(type_phrase)
-        
+
         if type_phrase == "question":
-            type_question(ponctuation)
+            identification_question = type_question(ponctuation)
 
         
+
+        
+
+
+
+    from type_phrase.noms import identification_nom
+    from type_phrase.noms import identification_pronom
+    def traitement_des_nom(nom_commun, GLOBAL):
+
+        
+        #les_noms = identification_nom(nom_commun, GLOBAL)
+        pronom = identification_pronom(GLOBAL)
+        #return les_noms,
+        return pronom
+
+
         
         #excla
         #ordre
 
+        
 
 
 
 
 
-    """les noms communs et combien par exemple ?"""
-    type_phrase = traitement_type_phrase(ponctuation)
 
 
+    
+    #type_phrase = traitement_type_phrase(ponctuation)
+    #noms1 = traitement_des_nom(nom_commun, GLOBAL)
+    pronom = traitement_des_nom(nom_commun, GLOBAL)
 
+    #print(type_phrase)
+    #print(noms1)
+    print(pronom)
 
 
 
@@ -349,7 +329,7 @@ while continuer:
     #et la 3eme commencer a coder
 
 
-
+    print("\n\n\n\n\n")
     cont = input("continuer maitre jb ?")
     if cont == "a":
         continuer = True
@@ -361,6 +341,11 @@ while continuer:
         print("faut définir la place c'est comment je suis devenu gros, comment es tu devenu gros ?")
         print("marche plus pour double phrase")
         print("faut déterminer quoi est peint")
+        print("marchés marche pas marché marche")
+
+
+        print("ET LA PROGRAMMATION ORIENT2 OBJET __INIT__ ET TOUT")
+        
         continuer = False
 
 
