@@ -83,19 +83,14 @@ def creation_par(terme, liste):
     
     liste1 = []
 
-    c = 0
     for i in propriete:
 
-        if c == 3:
-            text = i.get_text()
-            for mot in LISTE_OEUVRE:
-                finding = str(text).find(mot)
-                if finding >= 0:
-                    return ["oeuvre"]
-            break
 
-        
-        c+=1
+        text = i.get_text()
+        for mot in LISTE_OEUVRE:
+            finding = str(text).find(mot)
+            if finding >= 0:
+                return ["oeuvre"]
 
 
 
