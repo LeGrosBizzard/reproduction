@@ -24,7 +24,8 @@ def bs4(i, PATH, mode):
     soup_html = BeautifulSoup(page, "html.parser")
     
     if mode == "creation":
-        propriete = soup_html.find_all("div")
+        propriete1 = soup_html.find("body")
+        propriete = propriete1.find("div", {"id":"main"})
 
     elif mode == "ville":
         propriete = soup_html.find_all("div")
@@ -78,27 +79,23 @@ def creation_par(terme, liste):
     if terme[0][-1] == "?":
         terme = terme[0][:-1]
 
-    #print(PATH_OEUVRE.format(terme))
-
     propriete = bs4(terme, PATH_OEUVRE.format(terme), "creation")
-
-    liste1 = []
     
+    liste1 = []
+
+    c = 0
     for i in propriete:
 
-        for element in LISTE_OEUVRE:
-            
-            finding = str(i.get_text().lower()).find(str(element))
-            
-            if finding >= 0:
-                return ["oeuvre"]
+        if c == 3:
+            text = i.get_text()
+            for mot in LISTE_OEUVRE:
+                finding = str(text).find(mot)
+                if finding >= 0:
+                    return ["oeuvre"]
+            break
 
-##    for i in propriete:
-##        for element in LISTE_PERSONNE:
-##            finding = str(i.get_text().lower()).find(str(element))
-##            if finding >= 0:
-##                return "oeuvre"
-    
+        
+        c+=1
 
 
 
