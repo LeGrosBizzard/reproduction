@@ -29,12 +29,37 @@ def bs4(i, PATH, mode):
     elif mode == "ville":
         propriete = soup_html.find_all("div")
         
+    elif mode == "mot":
+        propriete = soup_html.find_all("span")
+
     return propriete
 
 
 
+from config.CONFIG import LISTE_OEUVRE
+def censure(terme):
 
-from nom.config.CONFIG import PATH_OEUVRE
+    liste = []
+
+    for mot in terme[0]:
+
+        ok = False
+        
+        for i in LISTE_OEUVRE:
+            if mot == i:
+                liste.append("fait")
+                ok = True
+        if ok is True:
+            pass
+        else:
+            liste.append(mot)
+
+    return [liste]
+
+
+
+from config.CONFIG import PATH_OEUVRE
+from config.CONFIG import LISTE_OEUVRE
 def creation_par(terme, liste):
     """En gros la tu:
     scrap sur wiki si l'entrée est présente,
@@ -49,43 +74,49 @@ def creation_par(terme, liste):
     ps: on supprime les le la ect... apres un ptit wiki on récu
     perera les le la les"""
 
-    dico = {}
+
+    if terme[0][-1] == "?":
+        terme = terme[0][:-1]
+
+    #print(PATH_OEUVRE.format(terme))
+
+    propriete = bs4(terme, PATH_OEUVRE.format(terme), "creation")
+
+    liste1 = []
     
-    for i in liste:
-        for j in i:
-            dico[j] = 0
-        
-    liste_w = []
+    for i in propriete:
 
-    out = []
-
-    for i in liste:
-        
-        propriete = bs4(i, PATH_OEUVRE.format(terme), "creation")
-
-        
-        for tag in propriete:
+        for element in LISTE_OEUVRE:
             
-            try:
-                for j in i:
-                    variable = tag.string.lower()
-                    find = str(variable).find(str(j))
-                    if find >= 0:
-                        dico[j] += 1
-            except:
-                pass
+            finding = str(i.get_text().lower()).find(str(element))
+            
+            if finding >= 0:
+                return ["oeuvre"]
 
-    for cle, valeur in dico.items():
-        if valeur >= 20:
-            out.append(cle)
-
-    return out
+##    for i in propriete:
+##        for element in LISTE_PERSONNE:
+##            finding = str(i.get_text().lower()).find(str(element))
+##            if finding >= 0:
+##                return "oeuvre"
+    
 
 
 
+from config.CONFIG import PATH_NON_MOT
+def recherche_non_definition(mot):
+    
+    propriete = bs4(mot, PATH_NON_MOT, "mot")
 
+    count = 0
+    for i in propriete:
+        if i.string == "Définitions corespondante à votre recherche":
+            count += 1
 
-
+    if count >= 1:
+        return mot
+    
+    else:
+        return ""
 
 
 
@@ -97,7 +128,7 @@ def ville(terme):
     """
 
     count = 0
-    
+
     propriete = bs4(terme, PATH_VILLE, "ville")
     for i in propriete:
         try:
@@ -106,16 +137,25 @@ def ville(terme):
             finding2 = str(i).find(terme + " ville")
             finding3 = str(i).find(terme + " Ville")
             finding4 = str(i).find("Code postal de" + terme)
+            finding5 = str(i).find("vivre à" + terme)
+            finding6 = str(i).find(terme + " meteo") 
+            finding7 = str(i).find(terme + " code postal")
+            finding8 = str(i).find(terme + " restaurant")
+            
 
             if finding >= 0 or\
                finding1 >= 0 or\
                finding2 >= 0 or\
                finding3 >= 0 or\
-               finding4 >= 0:
+               finding4 >= 0 or\
+               finding5 >= 0 or\
+               finding6 >= 0 or\
+               finding7 >= 0 or\
+               finding8 >= 0:
                 count += 1
-                
+
             if count >= 4:
-                out = "ville"
+                out = ["ville", terme]
                 return out
 
             
