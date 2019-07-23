@@ -6,6 +6,7 @@ les temps de pause ca
 
 evite de trop commit
 
+elle a glissé... 
 
 #ok pas vidéo mais comprendre chaque ligne et le truks de math
 
