@@ -47,7 +47,7 @@ while continuer:
 
         print("qui a fait la joconde ? et le radeau de la méduse ?")
         print("qui a fait la joconde?")
-        print('qui a fais et le radeau de la méduse ?')
+        print('qui a fais le radeau de la méduse ?')
         print("qui est l'auteur de la joconde")
         print("l'auteur de la joconde ?")
         print('qui est mona lisa ?')
@@ -187,36 +187,44 @@ while continuer:
 
 
 
-    
+
+
     from nom.mot_cle_function import creation_par
     from nom.mot_cle_function import ville
+    from nom.mot_cle_function import censure
+    from nom.mot_cle_function import recherche_non_definition
     def mot_cle():
         """radeau de la méduse ?
         mona lisa ? ville ?
         """
 
+        #ICI truk tableau, truk ville mais ville == ou?
+        #qui a fait : (on attache avec +) stop a interro
+
         liste = analyse_phrase(GLOBAL, PONCTUATION)
-        liste1 = ["+".join(i) for i in liste]
-
+        liste = censure(liste)
+        
+        liste1 = ["%20".join(i) for i in liste]
+        liste1 = liste1[0][:-4]
+        
         nom = creation_par(liste1, liste)
-        
-        if nom == []:
-            nom = []
-            nom_w = []
-            for i in GLOBAL:
-                sortie = ville(i)
-                if sortie != "" or sortie != None:
-                    nom_w.append(sortie)
 
-            for i in nom_w:
-                if i != "ville":
-                    pass
-                else:
-                    nom.append(i)
-                    
-                    #mettre un scrap genre et, les, quand
-        
-        return nom
+
+        non_mot_commun = []
+        for i in liste:
+            for j in i:
+                non_mot = recherche_non_definition(j)
+                if non_mot != "":
+                    non_mot_commun.append(non_mot)
+
+
+        nom_ville_ville = []
+        for i in non_mot_commun:
+            nom_ville = ville(i)
+            nom_ville_ville.append(nom_ville)
+
+            
+        return nom, nom_ville_ville
 
 
 
@@ -345,15 +353,14 @@ while continuer:
     cont = input("continuer maitre jb ?")
     if cont == "a":
         continuer = True
+        GLOBAL = []
     else:
         print("arrivederci et va chez le coiffeur")
         print("ici tablea utrello")
         print("faut définir le temps ex quel temps hier/ojd")
         print("faut définir la place c'est comment je suis devenu gros, comment es tu devenu gros ?")
-
-        print("les noms commun genre ronde//mona lisa....")
-
-
+        print("marche plus pour double phrase")
+        print("faut déterminer quoi est peint")
         continuer = False
 
 
