@@ -4,9 +4,10 @@ le jour IA
 
 les temps de pause ca
 
-evite de trop commit
+c du scrappage
 
-elle a glissé... gros formation extraction de balle, formation belette et pas de formation grimpouille ? pffffffff
+t'aurai pas fais mieux... faut coder autrement c toujours les memes truks enfete... mais battle dev c un peu ca, fais les exercices/projets des fofo bah tient go en faire un
+et matte la correction faut vriament changer la technique, et serieux ah oui fais les truks doc fin t'as deux mois ca va ^^
 
 #ok pas vidéo mais comprendre chaque ligne et le truks de math
 
